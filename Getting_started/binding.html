@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src= "https://unpkg.com/vue"></script>
+    <style>
+        .yellow{
+            border: 1px solid yellow;
+            font-size: larger;
+        }
+        .green{
+            border: 2px solid green;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <div id= 'root'>
+       Sign Up
+       <p v-text= "email"></p>
+       <input type="text" v-model= "email" :class= '{yellow: email.length < 2}'>
+       <br>
+       <p v-text= "name" v-once></p>
+       <input type="text" v-model= 'name' :class= "[name.length < 3 ? 'yellow' : 'green']">
+       <br>
+       <button @click= 'showAlert' v-bind:disabled= "email.length < 3">Click!</button>
+    </div>
+
+    <script>
+        let root = new Vue({
+            el: '#root',
+            data: {
+                email: '',
+                name: 'Himanshu'
+            },
+            methods: {
+                showAlert(){
+                    alert('signed up');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
