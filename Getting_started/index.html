@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src= "https://unpkg.com/vue"></script>
+   
+</head>
+<body>
+    <div id= "app">
+        <input type="text" placeholder="username" v-model="username">
+        <p>hello {{username}}</p>
+        <button @click= 'incCount'>Click!</button>
+        <span>{{count}}</span>
+        <div v-if= "isEven">{{even}}</div>
+        <div v-else>{{odd}}</div>
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+                username: "",
+                isEven: true,
+                even: "even",
+                odd: 'Odd'
+            },
+            methods: {
+                incCount(){
+                    this.count++;
+                    this.isEven = (this.count % 2 == 0) ? true : false
+                }
+            }
+        })
+    </script>
+</body>
+</html>
